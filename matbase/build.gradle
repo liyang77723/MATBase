@@ -41,8 +41,8 @@ ext {
 
     libraryDescription = 'Android basic class'
 
-    siteUrl = 'https://github.com/liyang77723/MATUtils'
-    gitUrl = 'https://github.com/liyang77723/MATUtils.git'
+    siteUrl = 'https://github.com/liyang77723/MATBase'
+    gitUrl = 'https://github.com/liyang77723/MATBase.git'
 
     libraryVersion = '0.0.1'
 
