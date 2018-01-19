@@ -17,8 +17,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected AppCompatActivity mActivity;
     protected ViewGroup mRootView;
 
-    private boolean isShow;
-
     protected abstract int getLayoutResId();
 
     @Override
@@ -67,21 +65,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void init(Bundle savedInstanceState);
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        isShow = false;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        isShow = true;
-    }
-
-    @SuppressWarnings("unused")
-    public boolean isShowing() {
-        return isShow;
-    }
 }
