@@ -1,14 +1,12 @@
 package cn.meiauto.matbase;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class DefaultFragment extends Fragment {
+public class DefaultFragment extends BaseFragment {
 
     private static final String ARG_TEXT = "text";
 
@@ -20,12 +18,16 @@ public class DefaultFragment extends Fragment {
         return fragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView = new TextView(getContext());
+    protected int getLayoutResId() {
+        return android.R.layout.simple_list_item_1;
+    }
+
+    @Override
+    protected void init(View rootView, Bundle savedInstanceState) {
+        TextView textView = rootView.findViewById(android.R.id.text1);
         textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        textView.setGravity(Gravity.CENTER);
         textView.setText(getArguments().getString(ARG_TEXT, "FRAGMENT"));
-        return textView;
     }
 }
