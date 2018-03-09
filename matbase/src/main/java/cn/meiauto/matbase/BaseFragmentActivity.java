@@ -74,7 +74,9 @@ public abstract class BaseFragmentActivity extends BaseActivity {
             transaction.show(mFrags.get(pos));
             transaction.commitAllowingStateLoss();
             mCurrentPos = pos;
-            mFrags.get(pos).onShow();
+            if (mFrags.get(pos).mPrepared){
+                mFrags.get(pos).onShow();
+            }
         } else {
             throw new RuntimeException("show fragment index > exist fragments(" + mFrags.size() + ")");
         }

@@ -2,6 +2,7 @@ package cn.meiauto.matbase;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -30,13 +31,24 @@ public abstract class BaseFragment extends Fragment {
         mRootView = inflater.inflate(getLayoutResId(), container, false);
         init(mRootView, savedInstanceState);
         setActionBar(mRootView);
-        mPrepared = true;
 
         if (!restoreStateFromArguments()) {
             onFirstTimeLaunched();
         }
 
         return mRootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPrepared = true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mPrepared = false;
     }
 
     protected abstract int getLayoutResId();
